@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const noSongsMessage = document.getElementById('noSongsMessage');
 
     const LOCAL_STORAGE_KEY = 'globalSongsCatalog';
-    let songs = []; // Array para almacenar las canciones
+    let songs = []; 
 
-    // --- Funciones de Utilidad para Local Storage ---
+  
     const getSongsFromLocalStorage = () => {
         const storedSongs = localStorage.getItem(LOCAL_STORAGE_KEY);
         return storedSongs ? JSON.parse(storedSongs) : [];
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(songsArray));
     };
 
-    // --- RF4.1: Adición de Canciones ---
+
     const addSong = (newSong) => {
         newSong.id = Date.now().toString(); // Genera un ID único basado en timestamp
         songs.push(newSong);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showAlert('Canción añadida exitosamente!', 'success');
     };
 
-    // --- RF4.2: Edición de Canciones ---
+
     const editSong = (updatedSong) => {
         const index = songs.findIndex(song => song.id === updatedSong.id);
         if (index !== -1) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- RF4.3: Eliminación de Canciones ---
+  
     const deleteSong = (id) => {
         if (confirm('¿Estás seguro de que quieres eliminar esta canción?')) {
             songs = songs.filter(song => song.id !== id);
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- RF4.4: Búsqueda de Canciones ---
+    
     const filterSongs = (searchTerm) => {
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
         return songs.filter(song =>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     };
 
-    // --- Renderizado de la Tabla y Lógica de UI ---
+    
     const renderSongs = () => {
         songsTableBody.innerHTML = '';
         const currentSearchTerm = searchBar.value.trim();
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Manejadores de Eventos ---
+   
 
     songForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     searchBar.addEventListener('input', () => {
-        renderSongs(); // Vuelve a renderizar la tabla con los resultados de la búsqueda
+        renderSongs(); 
     });
 
     clearSearchBtn.addEventListener('click', () => {
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSongs();
     });
 
-    // Función para mostrar alertas de Bootstrap
+    
     const showAlert = (message, type) => {
         const alertPlaceholder = document.querySelector('.container');
         const wrapper = document.createElement('div');
@@ -176,15 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
-        alertPlaceholder.prepend(wrapper); // Añade la alerta al principio del contenedor
-        // Opcional: Eliminar la alerta automáticamente después de un tiempo
+        alertPlaceholder.prepend(wrapper); 
+        
         setTimeout(() => {
             wrapper.remove();
         }, 3000);
     };
 
 
-    // Inicialización: Cargar canciones al cargar la página
+    
     songs = getSongsFromLocalStorage();
     renderSongs();
 });
