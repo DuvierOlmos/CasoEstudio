@@ -1,0 +1,11 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 760px;
+
+}
+footer{
+    background-color: rgb(45, 40, 103);
+}

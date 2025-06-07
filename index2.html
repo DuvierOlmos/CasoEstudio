@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style2.css">
+
+</head>
+<body>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">RapStars</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Catálogo
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./Catalog/index2.html">Albums</a></li>
+                  <li><a class="dropdown-item" href="./Artist/indexArtis.html">Artistas</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Canciones</a></li>
+                </ul>   
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Acerca de nosotros</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Gestión de Canciones - Catálogo Global</h1>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 id="formTitle">Añadir Nueva Canción</h4>
+            </div>
+            <div class="card-body">
+                <form id="songForm">
+                    <input type="hidden" id="songId">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="artist" class="form-label">Artista</label>
+                        <input type="text" class="form-control" id="artist" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Género</label>
+                        <input type="text" class="form-control" id="genre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Año</label>
+                        <input type="number" class="form-control" id="year">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="saveSongBtn">
+                        <i class="bi bi-plus-circle"></i> Añadir Canción
+                    </button>
+                    <button type="button" class="btn btn-secondary ms-2" id="cancelEditBtn" style="display: none;">
+                        <i class="bi bi-x-circle"></i> Cancelar Edición
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Buscar Canciones</h4>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchBar" placeholder="Buscar por título, artista o género...">
+                    <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
+                        <i class="bi bi-x-lg"></i> Limpiar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>Catálogo de Canciones</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Artista</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Año</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="songsTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">No hay canciones en el catálogo.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="noSongsMessage" class="alert alert-info text-center" style="display: none;">
+                    No se encontraron canciones que coincidan con la búsqueda.
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer id class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Catálogo Global de Canciones</h5>
+                    <p>
+                        Gestión intuitiva de tu colección de música. Añade, edita, elimina y busca tus canciones favoritas.
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Enlaces Útiles</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none">Acerca de</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none">Contacto</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none">Términos y Condiciones</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Síguenos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none"><i class="bi bi-facebook me-2"></i>Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none"><i class="bi bi-twitter-x me-2"></i>Twitter</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark text-decoration-none"><i class="bi bi-instagram me-2"></i>Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 Copyright:
+            <a class="text-dark" href="https://tuempresa.com/">RapStars</a>
+        </div>
+    </footer>
+    
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/JavaScript2.js"></script>
+</body>
+</html>
